@@ -34,11 +34,11 @@ nav {
     margin: 20px;
 }
 
-a {
+nav a {
     color: #eeeeee;
 }
 
-a:hover {
+nav a:hover {
     color: #a5a4a4;
 }
 

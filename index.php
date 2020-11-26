@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if (isset($_SESSION["id"])) {
+    $logado = 1;
+}else{
+    $logado = 0;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt_BR" dir="ltr">
 
@@ -18,16 +30,29 @@
 
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navegacao">
+            <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="index.php?">Home</a>
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="navbar-brand" href="index.php?folder=templates/&file=form_login.php">login</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="navbar-brand" href="index.php?folder=templates/&file=form_usuario.php">Crie sua
-                            conta</a>
-                    </li>
+                    <?php if($logado == 1): ?>
+                        <li class="nav-item active">
+                            <a class="navbar-brand" href="index.php?folder=templates/&file=perfil.php">Perfil</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php if($logado == 1): ?>
+                        <li class="nav-item active">
+                            <a class="navbar-brand" href="security/login/logout.php">Sair</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php if($logado == 0): ?>
+                        <li class="nav-item active">
+                            <a class="navbar-brand" href="index.php?folder=templates/&file=form_usuario.php">Crie sua conta</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="navbar-brand" href="index.php?folder=templates/&file=form_login.php">Entrar</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </nav>
         </header>
