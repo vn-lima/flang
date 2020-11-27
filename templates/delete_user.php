@@ -3,11 +3,10 @@ session_start();
 include "../security/database/connection.php";
 
 if (isset($_SESSION["id"])) {
-    $usuario = $_SESSION["id"];
-    $sql_sel_user = "DELETE FROM usuarios WHERE usuario = '$usuario'";
+    $id = $_SESSION["id"];
+    $sql_sel_user = "DELETE FROM usuarios WHERE id = $id";
     $instrucao = $db_connection->prepare($sql_sel_user);
     $instrucao->execute();
-
     if ($instrucao == true) {
         $msg= "Usuário deletado com sucesso";
         $status = "success";

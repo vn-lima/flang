@@ -19,6 +19,7 @@ include "../database/connection.php";
         if($count > 0){
             session_start();
             $_SESSION['id'] = $conta[0]["id"];
+            $_SESSION['usuario'] = $usuario;
             $_SESSION['idsessao'] = session_id();
 
             $msg = "Seja Bem-vindo $usuario";
